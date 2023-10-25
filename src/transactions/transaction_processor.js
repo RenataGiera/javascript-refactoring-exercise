@@ -26,38 +26,31 @@ function processTransactions(transActions) {
   txCount = sortByAmountThenName(txCount); // pass the object by reference
 
   // Place them back in array for returning
-  Object.keys(txCount).forEach( (key, index) => {
+  Object.keys(txCount).forEach((key, index) => {
     txr[index] = `${key} ${txCount[key]}`;
   });
   return txr;
 }
 
-sortByAmountThenName(txCount) => {(
-  let sortedKeys = Object.keys(txCount).sort(function sortingFunction(
-    itemOne,
-    itemTwo
-  ) {
-    return (
-      txCount[itemTwo] - txCount[itemOne] ||
+function sortByAmountThenName(txCount) {
+  let sortedKeys = Object.keys(txCount).sort((itemOne, itemTwo) => 
+    txCount[itemTwo] - txCount[itemOne] ||
       itemOne > itemTwo ||
       -(itemOne < itemTwo)
-    );
-  });
+  );
 
   const sortedResults = {};
-//   for (let objectKey of sortedKeys) {
-//     sortedResults[objectKey] = txCount[objectKey];
-//   }
-     sortedKeys.forEach((objectKey)=>{
+  //   for (let objectKey of sortedKeys) {
+  //     sortedResults[objectKey] = txCount[objectKey];
+  //   }
+  sortedKeys.forEach((objectKey) => {
     sortedResults[objectKey] = txCount[objectKey];
-});
+  });
 
-
- return sortedResults;
+  return sortedResults;
 }
 
-function validateTransactions(transactions) {
-   return (transactions !== undefined) //simplified the check
-}
+validateTransactions = (transactions) => transactions !== undefined;  //simplified the check
+
 
 module.exports = processTransactions;
