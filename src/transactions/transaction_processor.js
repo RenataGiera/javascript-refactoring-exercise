@@ -1,5 +1,5 @@
-function processTransactions(transActions) {
-  let txr = []; // to make it block / not global scope
+const processTransactions = (transActions) => {
+  const txr = []; // to make it block / not global scope
   // txr = []; has been already declared
 
   if (!validateTransactions(transActions)) {
@@ -24,8 +24,8 @@ function processTransactions(transActions) {
     txr[index] = `${key} ${txCount[key]}`;
   });
   return txr;
-}
-//changed to arrow function And changed variable sortedKeys to const 
+};
+//changed to arrow function And changed variable sortedKeys to const
 sortByAmountThenName = (txCount) => {
   const sortedKeys = Object.keys(txCount).sort(
     (itemOne, itemTwo) =>
@@ -38,7 +38,6 @@ sortByAmountThenName = (txCount) => {
   sortedKeys.forEach((objectKey) => {
     sortedResults[objectKey] = txCount[objectKey];
   });
-
   return sortedResults;
 };
 
