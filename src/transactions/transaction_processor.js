@@ -32,25 +32,22 @@ function processTransactions(transActions) {
   return txr;
 }
 
-function sortByAmountThenName(txCount) {
-  let sortedKeys = Object.keys(txCount).sort((itemOne, itemTwo) => 
-    txCount[itemTwo] - txCount[itemOne] ||
+sortByAmountThenName = (txCount) => {
+  const sortedKeys = Object.keys(txCount).sort(
+    (itemOne, itemTwo) =>
+      txCount[itemTwo] - txCount[itemOne] ||
       itemOne > itemTwo ||
       -(itemOne < itemTwo)
   );
 
   const sortedResults = {};
-  //   for (let objectKey of sortedKeys) {
-  //     sortedResults[objectKey] = txCount[objectKey];
-  //   }
   sortedKeys.forEach((objectKey) => {
     sortedResults[objectKey] = txCount[objectKey];
   });
 
   return sortedResults;
-}
+};
 
-validateTransactions = (transactions) => transactions !== undefined;  //simplified the check
-
+validateTransactions = (transactions) => transactions !== undefined; //simplified the check
 
 module.exports = processTransactions;
