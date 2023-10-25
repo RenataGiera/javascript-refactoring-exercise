@@ -10,12 +10,6 @@ function processTransactions(transActions) {
 
   //const numberOfTransactions = transActions.length; /*  we don't need this for the forEach syntax */
 
-  /*for (let i = 0; i < numberOfTransactions; i++) { 
-    const transaction = transActions[i];
-    txCount[transaction]
-      ? (txCount[transaction] += 1)
-      : (txCount[transaction] = 1);
-  }*/
   transActions.forEach((transaction) => {
     //implemented forEach to make if shorter
     txCount[transaction]
@@ -31,7 +25,7 @@ function processTransactions(transActions) {
   });
   return txr;
 }
-
+//changed to arrow function And changed variable sortedKeys to const 
 sortByAmountThenName = (txCount) => {
   const sortedKeys = Object.keys(txCount).sort(
     (itemOne, itemTwo) =>
