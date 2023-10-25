@@ -1,5 +1,5 @@
 const processTransactions = (transActions) => {
-  const txr = []; // to make it block / not global scope
+  //const txr = []; // to make it block / not global scope. Finally did not need this variable as we are directly returning the map result
   // txr = []; has been already declared
 
   if (!validateTransactions(transActions)) {
@@ -20,10 +20,8 @@ const processTransactions = (transActions) => {
   txCount = sortByAmountThenName(txCount); // pass the object by reference
 
   // Place them back in array for returning
-  Object.keys(txCount).forEach((key, index) => {
-    txr[index] = `${key} ${txCount[key]}`;
-  });
-  return txr;
+  //We can use map and return the result directly without placing in the array.
+  return Object.keys(txCount).map((key) => `${key} ${txCount[key]}`);
 };
 //changed to arrow function And changed variable sortedKeys to const
 sortByAmountThenName = (txCount) => {
